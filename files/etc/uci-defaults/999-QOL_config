@@ -1,5 +1,8 @@
 uci -q batch << EOI
 # Set pbuf options
+set wireless.radio0.disabled='0' 
+set wireless.radio1.disabled='0' 
+
 set pbuf.opt.auto_scale='on'
 set pbuf.opt.memory_profile='1gb'
 set pbuf.opt.scaling_governor='performance'
