@@ -21,7 +21,6 @@ set wireless.default_radio0.bss_transition='1'
 set wireless.default_radio0.proxy_arp='1'
 
 # Wireless radio0 specific settings
-set wireless.radio0.noscan='1'
 set wireless.radio0.htmode='HE80'
 set wireless.radio0.channel='auto'
 set wireless.radio0.country='DE'
