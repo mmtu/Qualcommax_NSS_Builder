@@ -14,6 +14,7 @@ env:
   RELEASE_PREFIX: main-nss
   NSS_PACKAGES_REPOSITORY: qosmio/nss-packages
   NSS_PACKAGES_REPOSITORY_BRANCH: NSS-12.5-K6.x
+  TZ: Asia/Shanghai
 
 jobs:
   check_commits:
@@ -54,6 +55,17 @@ jobs:
             gcc-multilib g++-multilib gettext git libncurses5-dev libssl-dev \
             python3-setuptools rsync swig unzip zlib1g-dev file wget
           sudo apt full-upgrade -y
+          sudo timedatectl set-timezone "$TZ"
+          
+      - name: Maximize build disk space
+        uses: easimon/maximize-build-space@master
+        with:
+          remove-dotnet: true
+          remove-android: true
+          remove-haskell: true
+          remove-codeql: true
+          remove-docker-images: true
+          
       - name: Checkout remote repository
         uses: actions/checkout@v4
         with:
@@ -126,10 +138,16 @@ jobs:
             Updated prebuilt images for ${{ env.RELEASE_DATE }}
             Build Commit: ${{ needs.check_commits.outputs.latest_commit_sha }}
             NSS Packages Commit: ${{ needs.check_commits.outputs.nss_packages_repo_latest_commit_sha }}
+      - name: Delete workflow runs
+        if: always()
+        uses: Mattraks/delete-workflow-runs@main
+        with:
+          retain_days: 30
+          keep_minimum_runs: 5
       - name: Clean up old releases
         uses: dev-drprasad/delete-older-releases@master
         with:
-          keep_latest: 2
+          keep_latest: 1
           delete_tags: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
