@@ -3,6 +3,8 @@ uci -q batch << EOI
 set wireless.radio0.disabled='0' 
 set wireless.radio1.disabled='0' 
 
+set system.@system[0].timezone="Asia/Chongqing"
+
 set pbuf.opt.auto_scale='on'
 set pbuf.opt.memory_profile='1gb'
 set pbuf.opt.scaling_governor='performance'
