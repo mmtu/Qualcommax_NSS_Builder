@@ -88,10 +88,6 @@ jobs:
       - name: Configure firmware image
         run: |
           mv custom_repo/${{ env.CONFIG_FILE }} .config
-          make defconfig -j$(nproc)
-
-      - name: Append CONFIG_RELR=y to target/linux/qualcommax/config-6.6
-        run: echo "CONFIG_RELR=y" >> target/linux/qualcommax/config-6.6
 
       - name: Modify default IP
         run: sed -i 's/192.168.1.1/192.168.31.1/g' package/base-files/files/bin/config_generate
