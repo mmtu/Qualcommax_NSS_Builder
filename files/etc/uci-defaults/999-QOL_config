@@ -4,8 +4,8 @@ set wireless.radio0.disabled='0'
 set wireless.radio1.disabled='0' 
 
 # Set timezone
-set system.@system[0].timezone='CST-8'
-set system.@system[0].timezone='Asia/Shanghai'
+set system.@system[-1].timezone='CST-8'
+set system.@system[-1].timezone='Asia/Shanghai'
 
 # Set pbuf options
 
@@ -62,5 +62,6 @@ network.@device[0].ipv6='0'
 set dhcp.lan.dhcpv6=disabled
 -q delete dhcp.lan.dhcpv6
 -q delete dhcp.lan.ra
+-q delete network.globals.ula_prefix
 set network.lan.delegate='0'
 EOI
