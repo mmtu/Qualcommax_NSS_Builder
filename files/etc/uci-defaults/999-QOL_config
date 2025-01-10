@@ -3,9 +3,6 @@ uci -q batch << EOI
 set wireless.radio0.disabled='0' 
 set wireless.radio1.disabled='0' 
 
-# Set timezone
-set system.@system[0].timezone='Asia/Shanghai'
-
 # Set pbuf options
 
 set pbuf.opt.auto_scale='on'
