@@ -93,7 +93,7 @@ jobs:
         run: |
           sed -i 's/192.168.1.1/192.168.31.1/g' package/base-files/files/bin/config_generate
           sed -i "s/timezone='.*'/timezone='Asia\/Shanghai'/g" package/base-files/files/bin/config_generate
-          sed -i 's/a3bb68bd729469470cbccd538d7fc529acabad46a2c9aa2ad6bb19fb05f01b45/15dbf930e1d91701812094ba27e0653a52974c0d5ece0ab0c50b772655ae9bdf/g' feeds/nss_packages/firmware/nss-firmware
+          sed -i 's/a3bb68bd729469470cbccd538d7fc529acabad46a2c9aa2ad6bb19fb05f01b45/15dbf930e1d91701812094ba27e0653a52974c0d5ece0ab0c50b772655ae9bdf/g' feeds/nss_packages/firmware/nss-firmware/Makefile
       - name: Include custom files
         run: |
           mkdir -p ${{ env.CUSTOM_FILES_PATH }}
